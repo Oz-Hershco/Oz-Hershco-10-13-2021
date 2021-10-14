@@ -10,13 +10,12 @@ export default function TopNavigationBar() {
     const userSettings = useSelector((state) => state.userSettings);
     const theme = userSettings.theme;
     const dispatch = useDispatch();
-
+    const handleOnClick = (checked) => { dispatch(toggleTheme(checked)) }
     return (
         <header className="TopNavigationBar">
             <div className="TopNavigationBar-LeftSide">
                 <h2 className="App-Title">Herolo Weather Task</h2>
-                <SwitchButton onClick={() => { dispatch(toggleTheme()) }} />
-                <div >{`${theme} Theme`}</div>
+                <SwitchButton labelText={`${theme} Theme`} onClick={handleOnClick} />
             </div>
             <div className="TopNavigationBar-RightSide">
                 <button>button 1</button>
