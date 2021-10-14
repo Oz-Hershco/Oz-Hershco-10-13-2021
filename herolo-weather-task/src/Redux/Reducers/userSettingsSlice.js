@@ -10,8 +10,8 @@ export const userSettingsSlice = createSlice({
         updateDefaultLocation: (state, action) => {
             state.defaultLocationId = action.payload;
         },
-        toggleTheme: (state, action) => {
-            state.theme = action.payload === 'Light' ? 'Dark' : 'Light';
+        toggleTheme: (state) => {
+            state.theme = state.theme === 'Light' ? 'Dark' : 'Light';
 
         },
     },
