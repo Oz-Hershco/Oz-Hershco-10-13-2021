@@ -1,15 +1,37 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
-.TopNavigationBar{
+.TopNavigationBar-Light,
+.TopNavigationBar-Dark {
     padding: 0 1.5em;
 }
 
-.TopNavigationBar, .TopNavigationBar-LeftSide{
+.TopNavigationBar-Light {
+    background-color: $white;
+}
+
+.TopNavigationBar-Dark {
+    background-color: lighten($color: $black, $amount: 25);
+}
+
+.TopNavigationBar-Light,
+.TopNavigationBar-Dark,
+.TopNavigationBar-LeftSide {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.App-Title{
-    font-family: 'Indie Flower', cursive;
+.App-Title-Dark,
+.App-Title-Light {
+    font-family: "Indie Flower", cursive;
+}
+.App-Title-Light {
+    color: lighten($color: $black, $amount: 25);
+}
+.App-Title-Dark {
+    color: $white;
+}
+
+.TopNavigationBar-RightSide button {
+    margin-right: 1em;
 }

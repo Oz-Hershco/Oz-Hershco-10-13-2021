@@ -12,14 +12,14 @@ export default function TopNavigationBar() {
     const dispatch = useDispatch();
     const handleOnClick = (checked) => { dispatch(toggleTheme(checked)) }
     return (
-        <header className="TopNavigationBar">
+        <header className={`TopNavigationBar-${theme}`}>
             <div className="TopNavigationBar-LeftSide">
-                <h2 className="App-Title">Herolo Weather Task</h2>
+                <h2 className={`App-Title-${theme}`}>Herolo Weather Task</h2>
                 <SwitchButton labelText={`${theme} Theme`} onClick={handleOnClick} />
             </div>
             <div className="TopNavigationBar-RightSide">
-                <button>button 1</button>
-                <button>button 2</button>
+                <button className={theme === "Light" ? "App-Primary-Button" : "App-Secondary-Button"}>Home</button>
+                <button className={theme === "Light" ? "App-Primary-Text-Button" : "App-Secondary-Text-Button"}>Favorites</button>
             </div>
         </header>
     )
