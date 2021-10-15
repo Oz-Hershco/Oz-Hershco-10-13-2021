@@ -22,7 +22,6 @@ export default function SelectedWeatherDisplay() {
     const currentTemperature = selectedWeather.defaultdMetric === "f" ? selectedWeather.currentWeather.temperature.f : selectedWeather.currentWeather.temperature.c;
     const defaultLocationId = userSettings.defaultLocationId;
 
-    console.log(favorites);
 
     useEffect(() => {
         return () => {
@@ -39,11 +38,12 @@ export default function SelectedWeatherDisplay() {
     }
 
     const handleAddSelectedWeatherToFavorites = () => {
-        if (favorites.filter(f => f.id === selectedWeather.id).length) {
-            dispatch(removeFavorite(selectedWeather.id));
-        } else {
-            dispatch(addFavorite(selectedWeather));
-        }
+        dispatch(addFavorite(selectedWeather));
+    }
+
+    const handleRemoveSelectedWeatherToFavorites = () => {
+        var indexOfSelectedFavoriteItem = favorites.findIndex((f) => f.id === selectedWeather.id);
+        dispatch(removeFavorite(indexOfSelectedFavoriteItem));
     }
 
     return (
@@ -72,8 +72,12 @@ export default function SelectedWeatherDisplay() {
                 </div>
                 {
                     favorites.filter(f => f.id === selectedWeather.id).length ?
-                        <div onClick={handleAddSelectedWeatherToFavorites} className="SelectedWeatherDisplay-Add-Favorites-Btn App-Accent-Button"><FontAwesomeIcon className="Favorites-Icon" icon={fullHeart} /> Added to favorites</div> :
-                        <div onClick={handleAddSelectedWeatherToFavorites} className="SelectedWeatherDisplay-Add-Favorites-Btn App-Secondary-Outlined-Button"><FontAwesomeIcon className="Favorites-Icon" icon={emptyHeart} /> Add to favorites</div>
+                        (
+                            <div onClick={handleRemoveSelectedWeatherToFavorites} className="SelectedWeatherDisplay-Add-Favorites-Btn App-Accent-Button"><FontAwesomeIcon className="Favorites-Icon" icon={fullHeart} /> Added to favorites</div>
+                        ) :
+                        (
+                            <div onClick={handleAddSelectedWeatherToFavorites} className="SelectedWeatherDisplay-Add-Favorites-Btn App-Secondary-Outlined-Button"><FontAwesomeIcon className="Favorites-Icon" icon={emptyHeart} /> Add to favorites</div>
+                        )
                 }
             </div>
             <div className="SelectedWeatherDisplay-Body">

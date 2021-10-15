@@ -6,12 +6,12 @@ export default function AutoCompleteDropdown(props) {
 
     const items = props.items;
     return (
-        <div className="AutoCompleteDropdown">
+        items && items.length ? <div className="AutoCompleteDropdown">
             {
-                items.map((item)=>{
-                  return (<div>{item.name}</div>)  
+                items.map((item) => {
+                    return (<div className="AutoCompleteDropdown-Option">{item.LocalizedName}</div>)
                 })
             }
-        </div>
+        </div> : null
     )
 }

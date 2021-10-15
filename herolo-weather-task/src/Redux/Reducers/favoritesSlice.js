@@ -8,7 +8,7 @@ export const favoritesSlice = createSlice({
             state.push(action.payload);
         },
         removeFavorite: (state, action) => {
-            state = state.filter((v) => v.id !== action.payload);
+            state.splice(action.payload, 1);
         },
         toggleDefaultMetric: (state, action) => {
             state = state.map((v) => {

@@ -1,7 +1,18 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
-.AutoCompleteDropdown{
+.AutoCompleteDropdown {
     background-color: $white;
-    padding: 1em;
     border: 1px solid lighten($color: $black, $amount: 75);
+    position: absolute;
+    width: 59.85em;
+    top: 208px;
+    left: 149px;
+    // -webkit-box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.31); 
+    // box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.31);
+    border-radius: 5px;
+}
+
+.AutoCompleteDropdown-Option {
+    cursor: pointer;
+    padding: 0.6em 1.5em;
 }

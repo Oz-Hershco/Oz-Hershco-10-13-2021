@@ -15,7 +15,7 @@ export default function WeatherDaysForcast(props) {
                         <div className="WeatherDaysForcast-Column" key={i}>
                             <p className="WeatherDaysForcast-Column-Text">{item.day}</p>
                             <div className="WeatherDaysForcast-Column-Icon-Container">
-                                <img className="WeatherDaysForcast-Column-Icon" src={item.icon} />
+                                <img className="WeatherDaysForcast-Column-Icon" src={item.icon} alt="weather state" />
                             </div>
                             <p className="WeatherDaysForcast-Column-Text">{currentTemperature}°</p>
                         </div>

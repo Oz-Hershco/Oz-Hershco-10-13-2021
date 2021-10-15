@@ -1722,3 +1722,5 @@ var currentWeatherResponse = [
       }
     ]
   };
+
+  export { autoCompleteSearch}

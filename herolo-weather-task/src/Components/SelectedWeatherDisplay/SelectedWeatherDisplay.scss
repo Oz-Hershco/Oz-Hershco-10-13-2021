@@ -58,8 +58,8 @@
     font-size: 10pt;
 }
 
-.Location-Icon{
-    margin-right: .25em;
+.Location-Icon {
+    margin-right: 0.25em;
 }
 
 .Default-Location-Btn {
@@ -68,6 +68,10 @@
     cursor: pointer;
     font-weight: 300;
     font-size: 10pt;
+}
+
+.Favorites-Icon {
+    margin-right: 0.25em;
 }
 
 .SelectedWeatherDisplay-WeatherText {
