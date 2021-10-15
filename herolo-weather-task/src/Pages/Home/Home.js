@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+
 import SelectedWeatherDisplay from '../../Components/SelectedWeatherDisplay/SelectedWeatherDisplay';
+import Textfield from '../../Components/Textfield/Textfield';
 
 import './Home.scss';
 
@@ -11,7 +13,7 @@ export default function Home() {
 
     return (
         <div className={`Home-${theme}`}>
-            <input type="text" />
+            <Textfield placeholder="Look up a city..."/>
             <SelectedWeatherDisplay />
         </div>
     )

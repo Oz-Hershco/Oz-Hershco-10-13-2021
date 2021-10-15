@@ -1,5 +1,8 @@
 .Home-Light, .Home-Dark{
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
