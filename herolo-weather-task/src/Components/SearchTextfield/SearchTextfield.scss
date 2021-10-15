@@ -1,6 +1,6 @@
 @import "../../App.scss";
 
-.Textfield {
+.SearchTextfield {
     display: flex;
     align-items: center;
     width: 58em;
@@ -12,12 +12,12 @@
     margin-bottom: 2.5em;
 }
 
-.Textfield-Search-Icon {
+.SearchTextfield-Icon {
     color: lighten($color: $black, $amount: 50);
     margin-right: 0.5em;
 }
 
-.Textfield-Input{
+.SearchTextfield-Input{
     flex: 1;
     border: none;
     outline: none;

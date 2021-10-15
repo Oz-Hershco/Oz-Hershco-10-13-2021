@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 
 import SelectedWeatherDisplay from '../../Components/SelectedWeatherDisplay/SelectedWeatherDisplay';
-import Textfield from '../../Components/Textfield/Textfield';
+import SearchTextfield from '../../Components/SearchTextfield/SearchTextfield';
 
 import './Home.scss';
 
@@ -12,8 +12,8 @@ export default function Home() {
     const theme = userSettings.theme;
 
     return (
-        <div className={`Home-${theme}`}>
-            <Textfield placeholder="Look up a city..."/>
+        <div className={`App-Body-${theme}`}>
+            <SearchTextfield placeholder="Look up a city..."/>
             <SelectedWeatherDisplay />
         </div>
     )

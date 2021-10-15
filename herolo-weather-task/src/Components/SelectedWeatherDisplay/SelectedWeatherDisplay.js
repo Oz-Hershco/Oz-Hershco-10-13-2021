@@ -7,6 +7,7 @@ import { faHeart as emptyHeart } from '@fortawesome/free-regular-svg-icons'
 import TempMetricToggle from '../TempMetricToggle/TempMetricToggle';
 
 import './SelectedWeatherDisplay.scss';
+import WeatherDaysForcast from '../WeatherDaysForcast/WeatherDaysForcast';
 
 export default function SelectedWeatherDisplay() {
 
@@ -40,7 +41,7 @@ export default function SelectedWeatherDisplay() {
                 <p className="SelectedWeatherDisplay-WeatherText">{selectedWeather.name}</p>
             </div>
             <div className="SelectedWeatherDisplay-Footer">
-
+                <WeatherDaysForcast defaultdMetric={selectedWeather.defaultdMetric} forcastArray={selectedWeather.weatherforcast} />
             </div>
         </div>
     )

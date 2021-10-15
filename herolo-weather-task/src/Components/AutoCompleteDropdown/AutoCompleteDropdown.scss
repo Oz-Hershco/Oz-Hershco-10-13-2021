@@ -1,0 +1,7 @@
+@import '../../App.scss';
+
+.AutoCompleteDropdown{
+    background-color: $white;
+    padding: 1em;
+    border: 1px solid lighten($color: $black, $amount: 75);
+}

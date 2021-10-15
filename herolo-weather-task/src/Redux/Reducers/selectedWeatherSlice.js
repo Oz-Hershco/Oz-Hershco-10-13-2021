@@ -22,6 +22,7 @@ export const selectedWeatherSlice = createSlice({
         weatherforcast:
             [
                 {
+                    day: 'Mon',
                     temperature: {
                         c: 25.9,
                         f: 79
@@ -29,6 +30,7 @@ export const selectedWeatherSlice = createSlice({
                     icon: "https://developer.accuweather.com/sites/default/files/11-s.png"
                 },
                 {
+                    day: 'Tue',
                     temperature: {
                         c: 25.9,
                         f: 79
@@ -36,6 +38,7 @@ export const selectedWeatherSlice = createSlice({
                     icon: "https://developer.accuweather.com/sites/default/files/11-s.png"
                 },
                 {
+                    day: 'Wed',
                     temperature: {
                         c: 25.9,
                         f: 79
@@ -43,6 +46,7 @@ export const selectedWeatherSlice = createSlice({
                     icon: "https://developer.accuweather.com/sites/default/files/11-s.png"
                 },
                 {
+                    day: 'Thu',
                     temperature: {
                         c: 25.9,
                         f: 79
@@ -50,6 +54,7 @@ export const selectedWeatherSlice = createSlice({
                     icon: "https://developer.accuweather.com/sites/default/files/11-s.png"
                 },
                 {
+                    day: 'Thu',
                     temperature: {
                         c: 25.9,
                         f: 79
