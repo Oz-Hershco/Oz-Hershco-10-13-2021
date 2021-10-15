@@ -1,0 +1,68 @@
+@import "../../App.scss";
+
+.SelectedWeatherDisplay {
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    width: 60em;
+    height: 34em;
+    border-radius: 1em;
+}
+
+.SelectedWeatherDisplay-Header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 2em;
+    color: $white;
+}
+
+.City-Icon {
+    font-size: 35pt;
+    margin-right: 0.25em;
+}
+
+.City-Info-Container {
+    align-items: center;
+    cursor: default;
+}
+
+.City-Info-Container,
+.City-Temperature-Container {
+    display: flex;
+}
+
+.City-Temperature-Container {
+    align-items: center;
+}
+
+.City-Name,
+.City-Temperature {
+    font-family: "Sarabun", sans-serif;
+    font-weight: 500;
+    margin: 0;
+}
+
+.City-Name {
+    font-size: 12pt;
+}
+
+.City-Temperature {
+    font-size: 22pt;
+    margin-right: 0.25em;
+}
+
+.SelectedWeatherDisplay-Default-Location-Btn {
+    font-family: "Sarabun", sans-serif;
+    text-decoration-line: underline;
+    cursor: pointer;
+    font-weight: 300;
+    font-size: 10pt;
+}
+
+.SelectedWeatherDisplay-WeatherText {
+    color: $white;
+    font-family: "Sarabun", sans-serif;
+    font-weight: 800;
+    font-size: 45pt;
+    text-align: center;
+}

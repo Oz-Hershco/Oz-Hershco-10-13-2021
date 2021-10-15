@@ -1,0 +1,20 @@
+.TempMetricToggle {
+    display: flex;
+}
+
+.TempMetricToggle-Button-Active {
+    opacity: 1;
+    cursor:default;
+}
+.TempMetricToggle-Button {
+    opacity: 0.5;
+    cursor:pointer;
+}
+
+.TempMetricToggle-Button:hover {
+    opacity: 1;
+}
+
+.TempMetricToggle-Divider {
+    margin: 0 0.2em;
+}

@@ -3,12 +3,13 @@
 .Textfield {
     display: flex;
     align-items: center;
-    width: 54.5em;
+    width: 58em;
     height: 1.75em;
     background-color: $white;
     border: 1px solid lighten($color: $black, $amount: 75);
     border-radius: 5px;
     padding: 0.6em 1em;
+    margin-bottom: 2.5em;
 }
 
 .Textfield-Search-Icon {
@@ -17,6 +18,7 @@
 }
 
 .Textfield-Input{
+    flex: 1;
     border: none;
     outline: none;
     font-family: 'Sarabun', sans-serif;

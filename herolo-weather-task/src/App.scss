@@ -16,7 +16,8 @@ $pink: #EF5B85;
 .App-Primary-Text-Button,
 .App-Secondary-Button,
 .App-Secondary-Text-Button,
-.App-Secondary-Outlined-Button {
+.App-Secondary-Outlined-Button,
+.App-Accent-Button {
     outline: none;
     border: none;
     padding: 0.5em 1.5em;
@@ -50,4 +51,9 @@ $pink: #EF5B85;
 .App-Secondary-Outlined-Button {
     color: $white;
     border: 1px solid $white;
+}
+
+.App-Accent-Button {
+    background-color: $pink;
+    color: $white;
 }
