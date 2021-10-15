@@ -51,7 +51,18 @@
     margin-right: 0.25em;
 }
 
-.SelectedWeatherDisplay-Default-Location-Btn {
+.Selected-Default-Location-Btn {
+    font-family: "Sarabun", sans-serif;
+    cursor: default;
+    font-weight: 300;
+    font-size: 10pt;
+}
+
+.Location-Icon{
+    margin-right: .25em;
+}
+
+.Default-Location-Btn {
     font-family: "Sarabun", sans-serif;
     text-decoration-line: underline;
     cursor: pointer;

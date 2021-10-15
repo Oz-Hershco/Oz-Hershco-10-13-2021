@@ -2,12 +2,16 @@ import React from 'react'
 
 import './TempMetricToggle.scss';
 
-export default function TempMetricToggle() {
+export default function TempMetricToggle(props) {
+
+    const handleOnClick = props.onClick;
+    const defaultdMetric = props.defaultdMetric;
+
     return (
-        <div className="TempMetricToggle">
-            <div className="TempMetricToggle-Button">C°</div>
+        <div onClick={handleOnClick} className="TempMetricToggle">
+            <div className={defaultdMetric === "c" ? "TempMetricToggle-Button-Active" : "TempMetricToggle-Button"}>C°</div>
             <div className="TempMetricToggle-Divider">|</div>
-            <div className="TempMetricToggle-Button-Active">F°</div>
+            <div className={defaultdMetric === "f" ? "TempMetricToggle-Button-Active" : "TempMetricToggle-Button"}>F°</div>
         </div>
     )
 }

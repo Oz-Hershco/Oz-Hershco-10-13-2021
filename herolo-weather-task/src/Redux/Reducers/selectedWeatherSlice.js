@@ -67,9 +67,12 @@ export const selectedWeatherSlice = createSlice({
         updateSelectedWeatherSlice: (state, action) => {
             state = action.payload;
         },
+        toggleDefaultMetric: (state) => {
+            state.defaultdMetric = state.defaultdMetric === "f" ? "c" : "f"
+        },
     },
 })
 
-export const { updateSelectedWeatherSlice } = selectedWeatherSlice.actions
+export const { updateSelectedWeatherSlice, toggleDefaultMetric } = selectedWeatherSlice.actions
 
 export default selectedWeatherSlice.reducer

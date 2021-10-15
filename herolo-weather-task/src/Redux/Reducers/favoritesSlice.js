@@ -5,13 +5,13 @@ export const favoritesSlice = createSlice({
     initialState: [],
     reducers: {
         addFavorite: (state, action) => {
-            state.value.push(action.payload);
+            state.push(action.payload);
         },
         removeFavorite: (state, action) => {
-            state.value = state.value.filter((v) => v.id === action.payload);
+            state = state.filter((v) => v.id !== action.payload);
         },
         toggleDefaultMetric: (state, action) => {
-            state.value = state.value.map((v) => {
+            state = state.map((v) => {
                 if (v.id === action.payload) {
                     v.defaultdMetric = v.defaultdMetric === "f" ? "c" : "f";
                 }
