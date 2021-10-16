@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const favoritesStorage = JSON.parse(localStorage.getItem("favoritesStorage"));
 export const favoritesSlice = createSlice({
     name: 'favorites',
-    initialState:  [{
+    initialState: [{
         id: "215849",
         name: "Cloudy",
         defaultdMetric: 'f',
@@ -78,7 +78,7 @@ export const favoritesSlice = createSlice({
         city: {
             id: 215854,
             name: "Tel Aviv",
-            image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/View_of_Diamond_Exchange_Center_from_Azrieli_Center.jpg"
+            image: "https://lp-cms-production.imgix.net/2019-06/8ec64b64e1d0805b1101f6c70c7f5b31-tel-aviv.jpg"
         },
         country: 'Israel',
         weatherforcast:
