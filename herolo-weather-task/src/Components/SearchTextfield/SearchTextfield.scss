@@ -3,12 +3,12 @@
 .SearchTextfield {
     display: flex;
     align-items: center;
-    width: 58em;
+    width: 60em;
     height: 1.75em;
     background-color: $white;
     border: 1px solid lighten($color: $black, $amount: 75);
     border-radius: 5px;
-    padding: 0.6em 1em;
+    padding: 1.5em 1em;
     margin-bottom: 2.5em;
     // -webkit-box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.31); 
     // box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.31);

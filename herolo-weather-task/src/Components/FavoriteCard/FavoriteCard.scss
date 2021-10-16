@@ -1,0 +1,114 @@
+@import "../../App.scss";
+
+.FavoriteCard {
+    background-color: $white;
+    width: 250px;
+    border-radius: 1em;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    margin-bottom: 3em;
+}
+
+.FavoriteCard-Header {
+    height: 200px;
+    display: flex;
+    justify-content: end;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+.Options-Icon {
+    z-index: 1;
+    color: $white;
+    padding: 0.5em;
+    cursor: pointer;
+    margin-top: 0.25em;
+    margin-right: 0.5em;
+}
+
+.FavoriteCard-OptionsDropdown-Option-Unfavorite-Icon,
+.FavoriteCard-OptionsDropdown-Option-Location-Icon {
+    margin-right: 0.25em;
+}
+
+.FavoriteCard-OptionsDropdown-Option-Unfavorite-Icon {
+    color: $pink;
+}
+
+.FavoriteCard-OptionsDropdown-Option-Location-Icon {
+    color: $blue;
+}
+
+.FavoriteCard-Default-Location-Label {
+    font-family: "Sarabun", sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    position: absolute;
+    margin-top: 167px;
+    margin-right: 105px;
+    color: lighten($color: $black, $amount: 40);
+    background-color: lighten($color: $black, $amount: 75);
+    padding: 0.35em 0.6em;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    border: 1px solid lighten($color: $black, $amount: 50);
+    border-bottom: 0;
+}
+
+.FavoriteCard-Body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+}
+
+.FavoriteCard-Temperature,
+.FavoriteCard-City,
+.FavoriteCard-Country,
+.FavoriteCard-Temperature-Text {
+    font-family: "Sarabun", sans-serif;
+    margin: 0;
+}
+
+.FavoriteCard-Weather-Details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.25em 0;
+}
+
+.FavoriteCard-Weather-Image {
+    width: auto;
+    height: 1.2em;
+    margin-right: 0.25em;
+}
+
+.FavoriteCard-Temperature {
+    margin-right: 0.25em;
+}
+
+.FavoriteCard-City {
+    font-size: 14pt;
+    font-weight: 500;
+    color: lighten($color: $black, $amount: 25);
+}
+
+.FavoriteCard-Country {
+    font-size: 12pt;
+    font-weight: 400;
+    color: lighten($color: $black, $amount: 75);
+}
+
+.FavoriteCard-Temperature {
+    font-size: 18pt;
+    font-weight: 400;
+}
+
+.FavoriteCard-Temperature-Text {
+    font-size: 10pt;
+    font-weight: 300;
+    color: lighten($color: $black, $amount: 50);
+}

@@ -15,12 +15,8 @@ $pink: #EF5B85;
 .App-Body-Light,
 .App-Body-Dark {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-repeat: no-repeat !important;
     background-size: cover !important;
-    padding-top: 5em;
 }
 
 .App-Body-Light {

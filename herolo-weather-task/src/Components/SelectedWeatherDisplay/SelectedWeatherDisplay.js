@@ -41,7 +41,7 @@ export default function SelectedWeatherDisplay() {
         dispatch(addFavorite(selectedWeather));
     }
 
-    const handleRemoveSelectedWeatherToFavorites = () => {
+    const handleRemoveSelectedWeatherFromFavorites = () => {
         var indexOfSelectedFavoriteItem = favorites.findIndex((f) => f.id === selectedWeather.id);
         dispatch(removeFavorite(indexOfSelectedFavoriteItem));
     }
@@ -73,7 +73,7 @@ export default function SelectedWeatherDisplay() {
                 {
                     favorites.filter(f => f.id === selectedWeather.id).length ?
                         (
-                            <div onClick={handleRemoveSelectedWeatherToFavorites} className="SelectedWeatherDisplay-Add-Favorites-Btn App-Accent-Button"><FontAwesomeIcon className="Favorites-Icon" icon={fullHeart} /> Added to favorites</div>
+                            <div onClick={handleRemoveSelectedWeatherFromFavorites} className="SelectedWeatherDisplay-Add-Favorites-Btn App-Accent-Button"><FontAwesomeIcon className="Favorites-Icon" icon={fullHeart} /> Added to favorites</div>
                         ) :
                         (
                             <div onClick={handleAddSelectedWeatherToFavorites} className="SelectedWeatherDisplay-Add-Favorites-Btn App-Secondary-Outlined-Button"><FontAwesomeIcon className="Favorites-Icon" icon={emptyHeart} /> Add to favorites</div>

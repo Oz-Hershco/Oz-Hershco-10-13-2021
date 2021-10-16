@@ -12,7 +12,7 @@ export default function Home() {
     const theme = userSettings.theme;
 
     return (
-        <div className={`App-Body-${theme}`}>
+        <div className={`App-Body-${theme} Home`}>
             <SearchTextfield placeholder="Look up a city..."/>
             <SelectedWeatherDisplay />
         </div>

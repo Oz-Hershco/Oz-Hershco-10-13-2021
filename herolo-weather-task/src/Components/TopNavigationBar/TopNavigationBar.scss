@@ -2,7 +2,7 @@
 
 .TopNavigationBar-Light,
 .TopNavigationBar-Dark {
-    padding: 0 1.5em;
+    padding: 0.75em 1.5em;
 }
 
 .TopNavigationBar-Light {
@@ -24,6 +24,7 @@
 .App-Title-Dark,
 .App-Title-Light {
     font-family: "Indie Flower", cursive;
+    margin: 0;
 }
 .App-Title-Light {
     color: lighten($color: $black, $amount: 25);

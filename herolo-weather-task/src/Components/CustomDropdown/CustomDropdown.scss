@@ -1,0 +1,21 @@
+@import "../../App.scss";
+
+#CustomDropdown-Button {
+    padding-right: 1em;
+}
+
+.CustomDropdown-Dots-Icon {
+    color: white;
+    margin-right: 1em;
+    margin-top: 0.75em;
+}
+
+.CustomDropdown-Menu {
+    margin-top: -22px !important;
+    margin-right: 10px !important;
+}
+
+.CustomDropdown-Menu-Item:active {
+    background-color: initial !important;
+    color: initial !important;
+}
