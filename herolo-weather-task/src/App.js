@@ -4,7 +4,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-
+import {NotificationContainer} from 'react-notifications';
 import Home from './Pages/Home/Home';
 import Favorites from "./Pages/Favorites/Favorites";
 import TopNavigationBar from './Components/TopNavigationBar/TopNavigationBar';
@@ -25,6 +25,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <NotificationContainer/>
     </div>
   );
 }

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { autoCompleteSearch } from '../../jsonTestingData';
-import { handleAutoCompleteAPI } from '../../Constants/Functions';
+import {NotificationManager} from 'react-notifications';
 
 import AutoCompleteDropdown from '../AutoCompleteDropdown/AutoCompleteDropdown';
 
@@ -10,28 +9,34 @@ import './SearchTextfield.scss';
 
 function SearchTextfield(props) {
 
+    const axios = require('axios').default;
     const [results, setResults] = useState([]);
 
     var placeholder = props.placeholder;
 
     const handleLocationSearch = (e) => {
         //add countdown after finish typing to start search after the last key up
-        //add error catching toast
         var value = e.currentTarget.value;
         if (value.length) {
-            handleAutoCompleteAPI(value).then((val) => {
-                // if (val)
-                //     console.log(val);
-                setResults(val.data);
-            }).catch(function (error) {
-                // handle error
-                console.log(error);
-            });
+
+            axios.get(`http://dataservice.accuweather.com/v1/cities/autocomplete?apikey=asdasd&q=${value}`)
+                .then(function (response) {
+                    if (response.data) {
+                        setResults(response.data);
+                    }
+                })
+                .catch(function (error) {
+                    NotificationManager.error('Something went wrong, please try again later.');
+
+                    console.log(error);
+                });
+                
         } else {
             setResults([]);
         }
 
     }
+    
     return (
         <div className="SearchTextfield">
             <FontAwesomeIcon className="SearchTextfield-Icon" icon={faSearch} />
