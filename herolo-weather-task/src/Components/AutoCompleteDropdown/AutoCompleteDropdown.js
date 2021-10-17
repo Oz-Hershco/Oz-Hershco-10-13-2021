@@ -18,7 +18,7 @@ export default function AutoCompleteDropdown(props) {
     const handleLocationSelect = (cityId, cityName, CountryName) => {
 
         //get current weather of city
-        axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${cityId}?apikey=${weatherAPIKey}`)
+        axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${cityId}?apikey=${weatherAPIKey}`)
             .then(function (response) {
                 var data = response.data[0];
                 var weatherIcon = data.WeatherIcon;
@@ -34,7 +34,7 @@ export default function AutoCompleteDropdown(props) {
                 var newWeatherForcast;
 
                 //get current weather forcast in c
-                axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityId}?apikey=${weatherAPIKey}&metric=true`)
+                axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityId}?apikey=${weatherAPIKey}&metric=true`)
                     .then(function (response) {
                         var data = response.data;
                         newWeatherForcast = [...data.DailyForecasts.map((forecast) => {

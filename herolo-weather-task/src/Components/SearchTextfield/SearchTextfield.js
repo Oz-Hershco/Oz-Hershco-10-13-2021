@@ -20,7 +20,7 @@ function SearchTextfield(props) {
 
     const handleLocationSearch = () => {
         if (searchValue.length) {
-            axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${weatherAPIKey}&q=${searchValue}`)
+            axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${weatherAPIKey}&q=${searchValue}`)
                 .then(function (response) {
                     if (response.data) {
                         setResults(response.data);

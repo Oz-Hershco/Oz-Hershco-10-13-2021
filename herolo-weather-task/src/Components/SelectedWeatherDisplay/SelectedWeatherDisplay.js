@@ -38,7 +38,7 @@ export default function SelectedWeatherDisplay() {
 
 
         //get current weather of city
-        await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${selectedWeather.id}?apikey=${weatherAPIKey}`)
+        await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${selectedWeather.id}?apikey=${weatherAPIKey}`)
             .then(function (response) {
                 var data = response.data[0];
                 var weatherIcon = data.WeatherIcon;
@@ -60,7 +60,7 @@ export default function SelectedWeatherDisplay() {
             });
 
         //get current weather forcast in c
-        await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${selectedWeather.id}?apikey=${weatherAPIKey}&metric=${selectedWeather.defaultdMetric === 'c' ? 'true' : 'false'}`)
+        await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${selectedWeather.id}?apikey=${weatherAPIKey}&metric=${selectedWeather.defaultdMetric === 'c' ? 'true' : 'false'}`)
             .then(function (response) {
                 var data = response.data;
                 var newWeatherForcast = [...data.DailyForecasts.map((forecast) => {
@@ -86,7 +86,7 @@ export default function SelectedWeatherDisplay() {
 
         var defaultdMetric = selectedWeather.defaultdMetric;
         //get current weather forcast in f/c based on default metric value
-        axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${selectedWeather.id}?apikey=${weatherAPIKey}&metric=${defaultdMetric === 'c' ? 'false' : 'true'}`)
+        axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${selectedWeather.id}?apikey=${weatherAPIKey}&metric=${defaultdMetric === 'c' ? 'false' : 'true'}`)
             .then(function (response) {
                 var data = response.data;
                 var newWeatherForcast = [...data.DailyForecasts.map((forecast) => {

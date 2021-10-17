@@ -36,7 +36,7 @@ export default function FavoriteCard(props) {
     }, [])
 
     const getCityWeather = () => {
-        axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${favorite.id}?apikey=${weatherAPIKey}`)
+        axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${favorite.id}?apikey=${weatherAPIKey}`)
             .then(function (response) {
                 var data = response.data[0];
                 var weatherIcon = data.WeatherIcon;
