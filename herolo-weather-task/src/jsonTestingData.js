@@ -1725,4 +1725,4 @@ var currentWeatherResponse = [
     ]
   };
 
-  export { autoCompleteSearch, fiveDaysForcast}
+  export { autoCompleteSearch, fiveDaysForcast, currentWeatherResponse}

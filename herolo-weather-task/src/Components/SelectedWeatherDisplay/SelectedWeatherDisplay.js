@@ -15,7 +15,7 @@ import { getCurrentWeatherByCityId } from '../../Constants/Functions';
 import { weatherAPIKey } from "../../Constants/Variables";
 
 import './SelectedWeatherDisplay.scss';
-import { fiveDaysForcast } from '../../jsonTestingData';
+import { currentWeatherResponse, fiveDaysForcast } from '../../jsonTestingData';
 
 
 export default function SelectedWeatherDisplay() {
@@ -31,10 +31,21 @@ export default function SelectedWeatherDisplay() {
 
     useEffect(() => {
 
-        // axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${selectedWeather.id}?apikey=${weatherAPIKey}`)
+        getCurrentWeatherDisplay();
+        return () => {
+
+        }
+    }, [])
+
+    const getCurrentWeatherDisplay = async () => {
+
+        //uncomment when ready
+        // //get current weather of city
+        // await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${selectedWeather.id}?apikey=${weatherAPIKey}`)
         //     .then(function (response) {
         //         var data = response.data[0];
         //         var weatherIcon = data.WeatherIcon;
+        //         var weatherNAme = data.WeatherText;
         //         var newCurrentWeather = {
         //             temperature: {
         //                 c: data.Temperature.Metric.Value,
@@ -43,36 +54,37 @@ export default function SelectedWeatherDisplay() {
         //             icon: `https://developer.accuweather.com/sites/default/files/${weatherIcon < 10 ? "0" + weatherIcon.toString() : weatherIcon}-s.png`
 
         //         }
-
-        //         axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${selectedWeather.id}?apikey=${weatherAPIKey}`)
-        //             .then(function (response) {
-        //                 var data = response.data[0];
-        //                 var weatherIcon = data.WeatherIcon;
-        //                 var newCurrentWeather = {
-        //                     temperature: {
-        //                         c: data.Temperature.Metric.Value,
-        //                         f: data.Temperature.Imperial.Value
-        //                     },
-        //                     icon: `https://developer.accuweather.com/sites/default/files/${weatherIcon < 10 ? "0" + weatherIcon.toString() : weatherIcon}-s.png`
-
-        //                 }
-        //                 dispatch(updateSelectedWeatherField(["currentWeather", newCurrentWeather]))
-        //             })
-        //             .catch(function (error) {
-        //                 NotificationManager.error('Something went wrong, please try again later.');
-        //                 console.log(error);
-        //             });
-
-        //         dispatch(updateSelectedWeatherField(["currentWeather", newCurrentWeather]))
+        //         dispatch(updateSelectedWeatherField(["currentWeather", newCurrentWeather]));
+        //         dispatch(updateSelectedWeatherField(["name", weatherNAme]));
         //     })
         //     .catch(function (error) {
         //         NotificationManager.error('Something went wrong, please try again later.');
         //         console.log(error);
         //     });
 
-        console.log(fiveDaysForcast)
+        // //get current weather forcast in c
+        // await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${selectedWeather.id}?apikey=${weatherAPIKey}&metric=true`)
+        //     .then(function (response) {
+        //         var data = response.data;
+        //         var newWeatherForcast = [...data.DailyForecasts.map((forecast) => {
+        //             return {
+        //                 day: moment(forecast.Date).format("ddd"),
+        //                 temperature: {
+        //                     c: forecast.Temperature.Minimum.Value,
+        //                     f: 0
+        //                 },
+        //                 icon: `https://developer.accuweather.com/sites/default/files/${forecast.Day.Icon < 10 ? "0" + forecast.Day.Icon.toString() : forecast.Day.Icon}-s.png`
+        //             }
+        //         })]
+        //         dispatch(updateSelectedWeatherField(["weatherforcast", newWeatherForcast]))
+        //     })
+        //     .catch(function (error) {
+        //         NotificationManager.error('Something went wrong, please try again later.');
+        //         console.log(error);
+        //     });
 
-        var newCurrentWeather = [...fiveDaysForcast.DailyForecasts.map((forecast)=>{
+        //temp local file
+        var newWeatherForcast = [...fiveDaysForcast.DailyForecasts.map((forecast) => {
             return {
                 day: moment(forecast.Date).format("ddd"),
                 temperature: {
@@ -82,15 +94,52 @@ export default function SelectedWeatherDisplay() {
                 icon: `https://developer.accuweather.com/sites/default/files/${forecast.Day.Icon < 10 ? "0" + forecast.Day.Icon.toString() : forecast.Day.Icon}-s.png`
             }
         })]
-        // dispatch(updateSelectedWeatherField(["currentWeather", newCurrentWeather]))
+        dispatch(updateSelectedWeatherField(["weatherforcast", newWeatherForcast]))
 
-        return () => {
+        var data = currentWeatherResponse[0];
+        var weatherIcon = data.WeatherIcon;
+        var weatherNAme = data.WeatherText;
+        var newCurrentWeather = {
+            temperature: {
+                c: data.Temperature.Metric.Value,
+                f: data.Temperature.Imperial.Value
+            },
+            icon: `https://developer.accuweather.com/sites/default/files/${weatherIcon < 10 ? "0" + weatherIcon.toString() : weatherIcon}-s.png`
 
         }
-    }, [favorites, selectedWeather, userSettings])
+        dispatch(updateSelectedWeatherField(["currentWeather", newCurrentWeather]));
+        dispatch(updateSelectedWeatherField(["name", weatherNAme]));
+
+    }
 
     const handleSelectedWeatherMetricToggle = () => {
-        dispatch(toggleDefaultMetric());
+
+        //uncomment when ready
+        // var defaultdMetric = selectedWeather.defaultdMetric;
+        // //get current weather forcast in f/c based on default metric value
+        // axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${selectedWeather.id}?apikey=${weatherAPIKey}&metric=${defaultdMetric === 'c' ? 'false' : 'true'}`)
+        //     .then(function (response) {
+        //         var data = response.data;
+        //         var newWeatherForcast = [...data.DailyForecasts.map((forecast) => {
+        //             return {
+        //                 day: moment(forecast.Date).format("ddd"),
+        //                 temperature: {
+        //                     c: forecast.Temperature.Minimum.Value,
+        //                     f: forecast.Temperature.Minimum.Value
+        //                 },
+        //                 icon: `https://developer.accuweather.com/sites/default/files/${forecast.Day.Icon < 10 ? "0" + forecast.Day.Icon.toString() : forecast.Day.Icon}-s.png`
+        //             }
+        //         })]
+        //         dispatch(toggleDefaultMetric());
+        //         dispatch(updateSelectedWeatherField(["weatherforcast", newWeatherForcast]))
+        //     })
+        //     .catch(function (error) {
+        //         NotificationManager.error('Something went wrong, please try again later.');
+        //         console.log(error);
+        //     });
+
+            dispatch(toggleDefaultMetric());
+       
     }
 
     const handleUpdateDefaultLocation = () => {

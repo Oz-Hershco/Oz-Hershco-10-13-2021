@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import {NotificationManager} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
+import { weatherAPIKey } from '../../Constants/Variables';
 
 import AutoCompleteDropdown from '../AutoCompleteDropdown/AutoCompleteDropdown';
 
@@ -11,39 +12,56 @@ function SearchTextfield(props) {
 
     const axios = require('axios').default;
     const [results, setResults] = useState([]);
-    const [didStartTyping, setDidStartTyping] = useState(false);
+    const [searchValue, setSearchValue] = useState("");
+    const [typingTimer, setTypingTimer] = useState(null);
 
+    var doneTypingInterval = 1000;
     var placeholder = props.placeholder;
 
-    const handleLocationSearch = (e) => {
-        setDidStartTyping(true);
-        //add countdown after finish typing to start search after the last key up
-        var value = e.currentTarget.value;
-        if (value.length) {
+    const handleLocationSearch = () => {
+        if (searchValue.length) {
+            axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${weatherAPIKey}&q=${searchValue}`)
+                .then(function (response) {
+                    if (response.data) {
+                        setResults(response.data);
+                    }
+                })
+                .catch(function (error) {
+                    NotificationManager.error('Something went wrong, please try again later.');
 
-            // axios.get(`http://dataservice.accuweather.com/v1/cities/autocomplete?apikey=asdasd&q=${value}`)
-            //     .then(function (response) {
-            //         if (response.data) {
-            //             setResults(response.data);
-            //         }
-            //     })
-            //     .catch(function (error) {
-            //         NotificationManager.error('Something went wrong, please try again later.');
-
-            //         console.log(error);
-            //     });
-                
+                    console.log(error);
+                });
         } else {
             setResults([]);
         }
 
     }
 
+    const resetResults = () => {
+        setResults([]);
+        setSearchValue("");
+    }
+
+    const handleOnKeyUp = () => {
+        clearTimeout(typingTimer);
+        setTypingTimer(setTimeout(handleFinishedTyping, doneTypingInterval))
+    }
+
+    const handleOnKeyDown = () => {
+        clearTimeout(typingTimer);
+    }
+
+
+
+    const handleFinishedTyping = () => {
+        handleLocationSearch();
+    }
+
     return (
         <div className="SearchTextfield">
             <FontAwesomeIcon className="SearchTextfield-Icon" icon={faSearch} />
-            <input className="SearchTextfield-Input" placeholder={placeholder} onKeyUp={()=>{setDidStartTyping(false)}} onChange={(e) => { handleLocationSearch(e) }} type="text" />
-            <AutoCompleteDropdown items={results} />
+            <input value={searchValue} className="SearchTextfield-Input" placeholder={placeholder} onKeyUp={handleOnKeyUp} onKeyDown={handleOnKeyDown} onChange={(e) => { setSearchValue(e.currentTarget.value) }} type="text" />
+            <AutoCompleteDropdown items={results} resetResults={resetResults} />
         </div>
     );
 }

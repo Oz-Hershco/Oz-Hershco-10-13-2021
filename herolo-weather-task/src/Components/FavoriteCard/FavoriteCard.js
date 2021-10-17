@@ -18,6 +18,7 @@ export default function FavoriteCard(props) {
     const dispatch = useDispatch();
     const favorites = useSelector((state) => state.favorites);
     const userSettings = useSelector((state) => state.userSettings);
+    const theme = userSettings.theme;
 
     const favorite = props.favorite;
     const currentTemperature = favorite.defaultdMetric === "f" ? favorite.currentWeather.temperature.f : favorite.currentWeather.temperature.c;
@@ -46,7 +47,7 @@ export default function FavoriteCard(props) {
 
     return (
         <div onClick={handleCardClick} className="FavoriteCard" >
-            <div className="FavoriteCard-Header" style={{ background: `linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(${favorite.city.image})` }}>
+            <div className={`FavoriteCard-Header-${theme}`} >
                 <CustomDropdown id={`CustomDropdown-${favorite.id}`} items={[
                     <div onClick={(e) => { handleRemoveSelectedWeatherFromFavorites(e) }} className="FavoriteCard-OptionsDropdown-Option"><FontAwesomeIcon className="FavoriteCard-OptionsDropdown-Option-Unfavorite-Icon" icon={faHeartBroken} /> Remove from favorites</div>,
                     defaultLocationId.toString() !== favorite.id ? <div onClick={(e) => { handleUpdateDefaultLocation(e) }} className="FavoriteCard-OptionsDropdown-Option"><FontAwesomeIcon className="FavoriteCard-OptionsDropdown-Option-Location-Icon" icon={faMapMarkerAlt} /> Set as default location</div> : null
