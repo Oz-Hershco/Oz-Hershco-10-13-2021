@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeartBroken, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from 'react-redux';
 import { NotificationManager } from 'react-notifications';
-import { toggleDefaultMetric, removeFavorite, updateFavoriteField } from '../../Redux/Reducers/favoritesSlice';
+import { toggleDefaultMetric, removeFavorite } from '../../Redux/Reducers/favoritesSlice';
 import { updateDefaultLocation } from '../../Redux/Reducers/userSettingsSlice';
 import { updateSelectedWeatherSlice } from '../../Redux/Reducers/selectedWeatherSlice';
 import { weatherAPIKey } from '../../Constants/Variables';
@@ -29,8 +29,7 @@ export default function FavoriteCard(props) {
     const defaultLocationId = userSettings.defaultLocationId;
 
     useEffect(() => {
-        //uncomment when ready
-        // getCityWeather();
+        getCityWeather();
         return () => {
 
         }
@@ -40,7 +39,6 @@ export default function FavoriteCard(props) {
         axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${favorite.id}?apikey=${weatherAPIKey}`)
             .then(function (response) {
                 var data = response.data[0];
-                console.log(data)
                 var weatherIcon = data.WeatherIcon;
                 var weatherName = data.WeatherText;
  

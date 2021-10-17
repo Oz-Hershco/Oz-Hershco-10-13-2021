@@ -17,7 +17,6 @@ export default function AutoCompleteDropdown(props) {
 
     const handleLocationSelect = (cityId, cityName, CountryName) => {
 
-        //uncomment when ready
         //get current weather of city
         axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${cityId}?apikey=${weatherAPIKey}`)
             .then(function (response) {

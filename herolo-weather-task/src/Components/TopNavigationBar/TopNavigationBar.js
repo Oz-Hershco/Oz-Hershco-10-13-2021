@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { Nav, NavDropdown, Navbar, Container } from 'react-bootstrap';
+import { Nav, Navbar, Container } from 'react-bootstrap';
 import { toggleTheme } from '../../Redux/Reducers/userSettingsSlice';
 
 import './TopNavigationBar.scss';

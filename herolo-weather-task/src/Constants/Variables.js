@@ -1,4 +1,5 @@
-const weatherAPIKey = "YyrguLM3AGwLUswsAzbnJ0TaKcPvk6hD";
-const imageSearchAPIKey = "AIzaSyD-WQ1bGz2nY4U_Gx5uOc7L52GWLg0zyfA";
+const weatherAPIKey = "a3AtSqeRh0APb8hJbcrCfAoYjcJGCofx";
+// const weatherAPIKey = "YyrguLM3AGwLUswsAzbnJ0TaKcPvk6hD";
+//Alternative Key - a3AtSqeRh0APb8hJbcrCfAoYjcJGCofx
 
-export { weatherAPIKey, imageSearchAPIKey };
+export { weatherAPIKey };
