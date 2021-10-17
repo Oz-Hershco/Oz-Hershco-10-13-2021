@@ -41,6 +41,7 @@ export const favoritesSlice = createSlice({
                 }
                 return v;
             });
+            localStorage.setItem("favoritesStorage", JSON.stringify(state));
         },
     },
 })

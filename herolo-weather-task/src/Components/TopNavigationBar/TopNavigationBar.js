@@ -31,7 +31,7 @@ export default function TopNavigationBar() {
         <header className={`TopNavigationBar-${theme}`}>
             <div className="TopNavigationBar-LeftSide">
                 <h2 className={`App-Title-${theme}`}>Herolo Weather Task</h2>
-                <SwitchButton labelText={`${theme} Theme`} onClick={handleThemeOnClick} />
+                <SwitchButton defaultChecked={theme === "Dark"} labelText={`${theme} Theme`} onClick={handleThemeOnClick} />
             </div>
             <div className="TopNavigationBar-RightSide">
                 <button onClick={() => { handleNavigationRouting(homeNavPath) }} className={homeNavButtonClass}>Home</button>
