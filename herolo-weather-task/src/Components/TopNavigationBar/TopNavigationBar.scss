@@ -33,6 +33,15 @@
     color: $white;
 }
 
+.TopNavigationBar-Nav-Wrapper {
+    display: flex;
+    justify-content: space-between !important;
+    width: 100%;
+}
+.TopNavigationBar-RightSide {
+    display: flex;
+    flex-wrap: wrap;
+}
 .TopNavigationBar-RightSide button {
     margin-right: 1em;
 }

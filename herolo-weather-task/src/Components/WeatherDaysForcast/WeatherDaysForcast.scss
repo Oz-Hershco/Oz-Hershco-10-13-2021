@@ -28,3 +28,15 @@
     font-weight: 300;
     font-size: 14pt;
 }
+
+@media screen and (max-width: 530px) {
+    .WeatherDaysForcast-Column-Icon {
+        width: auto;
+        height: 1em;
+        margin-bottom: 0em;
+    }
+
+    .WeatherDaysForcast-Column-Text {
+        font-size: 12pt;
+    }
+}

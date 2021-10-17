@@ -1,15 +1,23 @@
 //Colors
-$white: #FFFFFF;
+$white: #ffffff;
 $black: #000000;
-$purple: #805ACB;
-$purpleViolet: #B388FF;
-$blue: #5E6FCB;
-$pink: #EF5B85;
+$purple: #805acb;
+$purpleViolet: #b388ff;
+$blue: #5e6fcb;
+$pink: #ef5b85;
 
 .App {
     height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.App-Nav-Toggle-Dark {
+    background-color: $white !important;
+}
+.App-Nav-Toggle-Dark:focus {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .App-Body-Light,
@@ -26,8 +34,6 @@ $pink: #EF5B85;
 .App-Body-Dark {
     background: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), url("/images/dark-theme-bg.jpg");
 }
-
-
 
 .App-Primary-Button,
 .App-Primary-Text-Button,

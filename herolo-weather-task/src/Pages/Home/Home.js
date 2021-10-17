@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-
+import { Container } from 'react-bootstrap';
 import SelectedWeatherDisplay from '../../Components/SelectedWeatherDisplay/SelectedWeatherDisplay';
 import SearchTextfield from '../../Components/SearchTextfield/SearchTextfield';
 
@@ -13,8 +13,10 @@ export default function Home() {
 
     return (
         <div className={`App-Body-${theme} Home`}>
-            <SearchTextfield placeholder="Look up a city..."/>
-            <SelectedWeatherDisplay />
+            <Container>
+                <SearchTextfield placeholder="Look up a city..." />
+                <SelectedWeatherDisplay />
+            </Container>
         </div>
     )
 }

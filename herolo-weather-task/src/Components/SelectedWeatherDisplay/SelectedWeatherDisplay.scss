@@ -4,9 +4,9 @@
 .SelectedWeatherDisplay-Dark {
     background-repeat: no-repeat !important;
     background-size: cover !important;
-    width: 60em;
-    height: 34em;
+    width: 100%;
     border-radius: 1em;
+    padding-bottom: 1em;
 }
 
 .SelectedWeatherDisplay-Light {
@@ -19,10 +19,11 @@
 
 .SelectedWeatherDisplay-Header {
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: space-between;
     padding: 2em;
     color: $white;
+    flex-wrap: wrap-reverse;
 }
 
 .City-Icon {
@@ -80,6 +81,10 @@
     font-size: 10pt;
 }
 
+.SelectedWeatherDisplay-Add-Favorites-Btn{
+    margin-bottom: 1em;
+}
+
 .Favorites-Icon {
     margin-right: 0.25em;
 }
@@ -95,4 +100,19 @@
 .SelectedWeatherDisplay-Footer {
     display: flex;
     justify-content: center;
+}
+
+@media screen and (max-width: 530px) {
+
+    .SelectedWeatherDisplay-Header {
+        padding: 1em 1em 0 1em;
+    }
+
+    .SelectedWeatherDisplay-Footer {
+        padding: 0;
+    }
+
+    .SelectedWeatherDisplay-WeatherText {
+        font-size: 25pt;
+    }
 }

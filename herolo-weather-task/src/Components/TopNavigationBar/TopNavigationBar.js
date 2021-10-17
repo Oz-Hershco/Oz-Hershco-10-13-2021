@@ -1,6 +1,7 @@
 import React from 'react';
-import { useHistory,useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
+import { Nav, NavDropdown, Navbar, Container } from 'react-bootstrap';
 import { toggleTheme } from '../../Redux/Reducers/userSettingsSlice';
 
 import './TopNavigationBar.scss';
@@ -28,15 +29,32 @@ export default function TopNavigationBar() {
     const favoritesNavButtonClass = location.pathname === favoritesNavPath ? (theme === "Light" ? "App-Primary-Button" : "App-Secondary-Button") : (theme === "Light" ? "App-Primary-Text-Button" : "App-Secondary-Text-Button");
 
     return (
-        <header className={`TopNavigationBar-${theme}`}>
-            <div className="TopNavigationBar-LeftSide">
+        <Navbar className={`TopNavigationBar-${theme}`} expand="lg">
+            <Container>
                 <h2 className={`App-Title-${theme}`}>Herolo Weather Task</h2>
-                <SwitchButton defaultChecked={theme === "Dark"} labelText={`${theme} Theme`} onClick={handleThemeOnClick} />
-            </div>
-            <div className="TopNavigationBar-RightSide">
-                <button onClick={() => { handleNavigationRouting(homeNavPath) }} className={homeNavButtonClass}>Home</button>
-                <button onClick={() => { handleNavigationRouting(favoritesNavPath) }} className={favoritesNavButtonClass}>Favorites</button>
-            </div>
-        </header>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" className={`App-Nav-Toggle-${theme}`} />
+                <Navbar.Collapse id="basic-navbar-nav" >
+                    <Nav className=" TopNavigationBar-Nav-Wrapper">
+                        <div className="TopNavigationBar-LeftSide">
+                            <SwitchButton defaultChecked={theme === "Dark"} labelText={`${theme} Theme`} onClick={handleThemeOnClick} />
+                        </div>
+                        <div className="TopNavigationBar-RightSide">
+                            <Nav.Link href="#"><button onClick={() => { handleNavigationRouting(homeNavPath) }} className={homeNavButtonClass}>Home</button></Nav.Link>
+                            <Nav.Link href="#"> <button onClick={() => { handleNavigationRouting(favoritesNavPath) }} className={favoritesNavButtonClass}>Favorites</button></Nav.Link>
+                        </div>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+        //         <header >
+        //     <div className="TopNavigationBar-LeftSide">
+        //         
+        //     </div>
+        //     <div className="TopNavigationBar-RightSide">
+        //         <button onClick={() => { handleNavigationRouting(homeNavPath) }} className={homeNavButtonClass}>Home</button>
+        //         <button onClick={() => { handleNavigationRouting(favoritesNavPath) }} className={favoritesNavButtonClass}>Favorites</button>
+        //     </div>
+        // </header> 
     )
 }
+

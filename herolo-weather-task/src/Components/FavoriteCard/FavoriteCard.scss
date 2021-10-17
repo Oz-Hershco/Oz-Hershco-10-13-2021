@@ -122,3 +122,9 @@
     font-weight: 300;
     color: lighten($color: $black, $amount: 50);
 }
+
+@media screen and (max-width: 330px) {
+    .FavoriteCard-Default-Location-Label {
+        margin-right: 50px;
+    }
+}
