@@ -5,7 +5,7 @@ export const selectedWeatherSlice = createSlice({
     initialState: {
         id: "215849",
         name: "Cloudy",
-        defaultdMetric: 'f',
+        defaultdMetric: 'c',
         currentWeather: {
             temperature: {
                 c: 25.9,

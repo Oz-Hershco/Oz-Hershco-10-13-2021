@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCity, faHeart as fullHeart, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as emptyHeart } from '@fortawesome/free-regular-svg-icons'
@@ -14,6 +15,7 @@ import { getCurrentWeatherByCityId } from '../../Constants/Functions';
 import { weatherAPIKey } from "../../Constants/Variables";
 
 import './SelectedWeatherDisplay.scss';
+import { fiveDaysForcast } from '../../jsonTestingData';
 
 
 export default function SelectedWeatherDisplay() {
@@ -41,12 +43,46 @@ export default function SelectedWeatherDisplay() {
         //             icon: `https://developer.accuweather.com/sites/default/files/${weatherIcon < 10 ? "0" + weatherIcon.toString() : weatherIcon}-s.png`
 
         //         }
+
+        //         axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${selectedWeather.id}?apikey=${weatherAPIKey}`)
+        //             .then(function (response) {
+        //                 var data = response.data[0];
+        //                 var weatherIcon = data.WeatherIcon;
+        //                 var newCurrentWeather = {
+        //                     temperature: {
+        //                         c: data.Temperature.Metric.Value,
+        //                         f: data.Temperature.Imperial.Value
+        //                     },
+        //                     icon: `https://developer.accuweather.com/sites/default/files/${weatherIcon < 10 ? "0" + weatherIcon.toString() : weatherIcon}-s.png`
+
+        //                 }
+        //                 dispatch(updateSelectedWeatherField(["currentWeather", newCurrentWeather]))
+        //             })
+        //             .catch(function (error) {
+        //                 NotificationManager.error('Something went wrong, please try again later.');
+        //                 console.log(error);
+        //             });
+
         //         dispatch(updateSelectedWeatherField(["currentWeather", newCurrentWeather]))
         //     })
         //     .catch(function (error) {
         //         NotificationManager.error('Something went wrong, please try again later.');
         //         console.log(error);
         //     });
+
+        console.log(fiveDaysForcast)
+
+        var newCurrentWeather = [...fiveDaysForcast.DailyForecasts.map((forecast)=>{
+            return {
+                day: moment(forecast.Date).format("ddd"),
+                temperature: {
+                    c: forecast.Temperature.Minimum.Value,
+                    f: 79
+                },
+                icon: `https://developer.accuweather.com/sites/default/files/${forecast.Day.Icon < 10 ? "0" + forecast.Day.Icon.toString() : forecast.Day.Icon}-s.png`
+            }
+        })]
+        // dispatch(updateSelectedWeatherField(["currentWeather", newCurrentWeather]))
 
         return () => {
 
