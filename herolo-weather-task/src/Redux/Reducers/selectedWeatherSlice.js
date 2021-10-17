@@ -40,7 +40,7 @@ export const selectedWeatherSlice = createSlice({
                     day: 'Wed',
                     temperature: {
                         c: 25.9,
-                        f: 79
+                        f: 78
                     },
                     icon: "https://developer.accuweather.com/sites/default/files/11-s.png"
                 },

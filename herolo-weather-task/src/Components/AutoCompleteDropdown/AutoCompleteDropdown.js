@@ -24,7 +24,7 @@ export default function AutoCompleteDropdown(props) {
                 var data = response.data[0];
                 var weatherIcon = data.WeatherIcon;
                 var weatherName = data.WeatherText;
-                console.log(weatherName)
+          
                 var newCurrentWeather = {
                     temperature: {
                         c: data.Temperature.Metric.Value,

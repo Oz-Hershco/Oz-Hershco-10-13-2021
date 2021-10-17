@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from "react-router-dom";
 import TempMetricToggle from '../TempMetricToggle/TempMetricToggle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeartBroken, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleDefaultMetric, removeFavorite } from '../../Redux/Reducers/favoritesSlice';
+import { NotificationManager } from 'react-notifications';
+import { toggleDefaultMetric, removeFavorite, updateFavoriteField } from '../../Redux/Reducers/favoritesSlice';
 import { updateDefaultLocation } from '../../Redux/Reducers/userSettingsSlice';
 import { updateSelectedWeatherSlice } from '../../Redux/Reducers/selectedWeatherSlice';
+import { weatherAPIKey } from '../../Constants/Variables';
+
 import CustomDropdown from '../CustomDropdown/CustomDropdown';
 
 import './FavoriteCard.scss';
@@ -14,6 +17,7 @@ import './FavoriteCard.scss';
 
 export default function FavoriteCard(props) {
 
+    const axios = require('axios').default;
     let history = useHistory();
     const dispatch = useDispatch();
     const favorites = useSelector((state) => state.favorites);
@@ -23,6 +27,50 @@ export default function FavoriteCard(props) {
     const favorite = props.favorite;
     const currentTemperature = favorite.defaultdMetric === "f" ? favorite.currentWeather.temperature.f : favorite.currentWeather.temperature.c;
     const defaultLocationId = userSettings.defaultLocationId;
+
+    useEffect(() => {
+        //uncomment when ready
+        // getCityWeather();
+        return () => {
+
+        }
+    }, [])
+
+    const getCityWeather = () => {
+        axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${favorite.id}?apikey=${weatherAPIKey}`)
+            .then(function (response) {
+                var data = response.data[0];
+                console.log(data)
+                var weatherIcon = data.WeatherIcon;
+                var weatherName = data.WeatherText;
+ 
+                var newCurrentWeather = {
+                    temperature: {
+                        c: data.Temperature.Metric.Value,
+                        f: data.Temperature.Imperial.Value
+                    },
+                    icon: `https://developer.accuweather.com/sites/default/files/${weatherIcon < 10 ? "0" + weatherIcon.toString() : weatherIcon}-s.png`
+                }
+                var newWeatherObject = {
+                    id: favorite.id,
+                    name: weatherName,
+                    defaultdMetric: favorite.defaultdMetric,
+                    currentWeather: newCurrentWeather,
+                    city: {
+                        id: favorite.city.id,
+                        name: favorite.city.name,
+                    },
+                    country: favorite.country,
+                    weatherforcast: favorite.weatherforcast
+                };
+                dispatch(updateSelectedWeatherSlice(newWeatherObject));
+            })
+            .catch(function (error) {
+                NotificationManager.error('Something went wrong, please try again later.');
+                console.log(error);
+            });
+
+    }
 
     const handleSelectedWeatherMetricToggle = (e) => {
         e.stopPropagation();
