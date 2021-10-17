@@ -1,11 +1,20 @@
 @import "../../App.scss";
 
-.SelectedWeatherDisplay {
+.SelectedWeatherDisplay-Light,
+.SelectedWeatherDisplay-Dark {
     background-repeat: no-repeat !important;
     background-size: cover !important;
     width: 60em;
     height: 34em;
     border-radius: 1em;
+}
+
+.SelectedWeatherDisplay-Light {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/light-display-bg.jpg");
+}
+
+.SelectedWeatherDisplay-Dark {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/dark-display-bg.jpg");
 }
 
 .SelectedWeatherDisplay-Header {

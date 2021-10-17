@@ -15,8 +15,7 @@ export const selectedWeatherSlice = createSlice({
         },
         city: {
             id: 215849,
-            name: "Ramat Gan",
-            image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/View_of_Diamond_Exchange_Center_from_Azrieli_Center.jpg"
+            name: "Tel Aviv",
         },
         country: 'Israel',
         weatherforcast:
@@ -64,6 +63,11 @@ export const selectedWeatherSlice = createSlice({
             ]
     },
     reducers: {
+        updateSelectedWeatherField: (state, action) => {
+            var field = action.payload[0];
+            var newValue = action.payload[1];
+            state[field] = newValue;
+        },
         updateSelectedWeatherSlice: (state, action) => {
             var newObject = action.payload;
             state.id = newObject.id;
@@ -81,6 +85,6 @@ export const selectedWeatherSlice = createSlice({
     },
 })
 
-export const { updateSelectedWeatherSlice, toggleDefaultMetric } = selectedWeatherSlice.actions
+export const { updateSelectedWeatherSlice, toggleDefaultMetric, updateSelectedWeatherField } = selectedWeatherSlice.actions
 
 export default selectedWeatherSlice.reducer

@@ -3,27 +3,51 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCity, faHeart as fullHeart, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as emptyHeart } from '@fortawesome/free-regular-svg-icons'
+import { NotificationManager } from 'react-notifications';
 
 import TempMetricToggle from '../TempMetricToggle/TempMetricToggle';
 import WeatherDaysForcast from '../WeatherDaysForcast/WeatherDaysForcast';
-import { toggleDefaultMetric } from '../../Redux/Reducers/selectedWeatherSlice';
+import { toggleDefaultMetric, updateSelectedWeatherField } from '../../Redux/Reducers/selectedWeatherSlice';
 import { updateDefaultLocation } from '../../Redux/Reducers/userSettingsSlice';
 import { addFavorite, removeFavorite } from '../../Redux/Reducers/favoritesSlice';
+import { getCurrentWeatherByCityId } from '../../Constants/Functions';
+import { weatherAPIKey } from "../../Constants/Variables";
 
 import './SelectedWeatherDisplay.scss';
 
 
 export default function SelectedWeatherDisplay() {
 
+    const axios = require('axios').default;
     const dispatch = useDispatch();
     const favorites = useSelector((state) => state.favorites);
     const selectedWeather = useSelector((state) => state.selectedWeather);
     const userSettings = useSelector((state) => state.userSettings);
     const currentTemperature = selectedWeather.defaultdMetric === "f" ? selectedWeather.currentWeather.temperature.f : selectedWeather.currentWeather.temperature.c;
     const defaultLocationId = userSettings.defaultLocationId;
-
+    const theme = userSettings.theme;
 
     useEffect(() => {
+
+        // axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${selectedWeather.id}?apikey=${weatherAPIKey}`)
+        //     .then(function (response) {
+        //         var data = response.data[0];
+        //         var weatherIcon = data.WeatherIcon;
+        //         var newCurrentWeather = {
+        //             temperature: {
+        //                 c: data.Temperature.Metric.Value,
+        //                 f: data.Temperature.Imperial.Value
+        //             },
+        //             icon: `https://developer.accuweather.com/sites/default/files/${weatherIcon < 10 ? "0" + weatherIcon.toString() : weatherIcon}-s.png`
+
+        //         }
+        //         dispatch(updateSelectedWeatherField(["currentWeather", newCurrentWeather]))
+        //     })
+        //     .catch(function (error) {
+        //         NotificationManager.error('Something went wrong, please try again later.');
+        //         console.log(error);
+        //     });
+
         return () => {
 
         }
@@ -47,7 +71,7 @@ export default function SelectedWeatherDisplay() {
     }
 
     return (
-        <div className="SelectedWeatherDisplay" style={{ background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${selectedWeather.city.image})` }}>
+        <div className={`SelectedWeatherDisplay-${theme}`}>
             <div className="SelectedWeatherDisplay-Header">
                 <div>
                     <div className="City-Info-Container">
@@ -61,7 +85,7 @@ export default function SelectedWeatherDisplay() {
                         </div>
                     </div>
                     {
-                        defaultLocationId === selectedWeather.id ?
+                        defaultLocationId.toString() === selectedWeather.id ?
                             (
                                 <div className="Selected-Default-Location-Btn"><FontAwesomeIcon className="Location-Icon" icon={faMapMarkerAlt} /> Default Location</div>
                             ) :

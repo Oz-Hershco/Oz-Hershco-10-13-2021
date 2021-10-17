@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const userSettingsSlice = createSlice({
     name: 'userSettings',
     initialState: {
-        defaultLocationId: 215854,
+        defaultLocationId: 215849,
         theme: 'Light'
     },
     reducers: {
